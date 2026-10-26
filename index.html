@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Miranda Sandoval · Bazar en Línea &amp; Live Shopping</title>
+  <meta name="description" content="Bazar en línea desde Monterrey. Pacas premium, piezas únicas y live shopping cada semana. Aparta por WhatsApp y recibe en todo México.">
+  <meta name="theme-color" content="#17140f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Miranda Bazar">
+  <meta name="application-name" content="Miranda Bazar">
+  <meta property="og:title" content="Miranda Sandoval · Bazar en Línea">
+  <meta property="og:description" content="Piezas únicas, en vivo y para ti. Aparta por WhatsApp y recibe en todo México.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero-boutique.jpg">
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============================================================
+       ICONOS (sprite SVG)
+  ============================================================ -->
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.59 13.41L13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.4"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="4"/><polyline points="6 10 12 4 18 10"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="7 4 20 12 7 20 7 4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M1 1l22 22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.09 5.26L20 9.27l-4.36 3.73L16.82 19 12 16.02 7.18 19l1.18-6L4 9.27l5.91-1.01L12 3z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+  </svg>
+
+  <!-- ============================================================
+       AVISO SUPERIOR
+  ============================================================ -->
+  <div class="announcement">
+    <div class="container announcement__inner">
+      <span><span class="live-dot live-dot--gold"></span>Próximo live: <strong data-next-live>viernes · 8:30 PM</strong></span>
+      <span class="announcement__sep" aria-hidden="true"></span>
+      <span>Envíos a todo México</span>
+      <span class="announcement__sep" aria-hidden="true"></span>
+      <span>Aparta con $100</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ENCABEZADO
+  ============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container site-header__inner">
+      <a class="brand" href="#inicio" aria-label="Miranda Sandoval, ir al inicio">
+        <img class="brand__mark" src="assets/icon-192.png" alt="" width="44" height="44">
+        <span class="brand__text">
+          <strong>Miranda Sandoval</strong>
+          <span>Bazar en línea</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="primaryNav" aria-label="Navegación principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#live" class="nav__live"><span class="live-dot"></span>En vivo</a>
+        <a href="#historia">Nosotras</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn--ghost btn--sm header-app" type="button" data-open="installModal" aria-label="Descargar la app">
+          <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+          <span>Descargar app</span>
+        </button>
+        <a class="btn btn--dark btn--sm header-wa" href="https://wa.me/528123752627?text=Hola%20Miranda%2C%20quiero%20apartar%20una%20pieza%20del%20bazar." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+          <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+          <span>WhatsApp</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Abrir menú">
+          <svg class="icon nav-toggle__open" aria-hidden="true"><use href="#i-menu"></use></svg>
+          <svg class="icon nav-toggle__close" aria-hidden="true"><use href="#i-x"></use></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- ==========================================================
+         HERO
+    ========================================================== -->
+    <section class="hero" id="inicio" aria-labelledby="heroTitle">
+      <div class="container hero__grid">
+        <div class="hero__content" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Bazar en línea · Live shopping</p>
+          <h1 class="hero__title" id="heroTitle">Piezas únicas,<br><em>en vivo</em> y para ti.</h1>
+          <p class="hero__lede">Pacas premium seleccionadas a mano, una pieza por modelo. Compra desde el live o por WhatsApp y recibe tu pedido en todo México.</p>
+          <div class="hero__actions">
+            <a class="btn btn--dark" href="#catalogo">
+              Explorar catálogo
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+            <a class="btn btn--outline" href="#live" data-scroll-live>
+              <span class="live-dot"></span>
+              Ver el live
+            </a>
+          </div>
+          <ul class="hero__perks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Envíos nacionales</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Piezas seleccionadas</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Atención personal</li>
+          </ul>
+        </div>
+
+        <div class="hero__media" data-reveal>
+          <figure class="hero__frame">
+            <img src="assets/hero-boutique.jpg" alt="Rack con blusa de seda, abrigo camel, falda plisada y suéter crema en un probador de tonos cálidos" width="1200" height="1800" fetchpriority="high">
+            <figcaption class="hero__tag hero__tag--live">
+              <span class="live-dot"></span>
+              <span>
+                <strong>Próximo live</strong>
+                <span data-next-live>Viernes · 8:30 PM</span>
+              </span>
+            </figcaption>
+            <span class="hero__tag hero__tag--place">
+              <svg class="icon" aria-hidden="true"><use href="#i-map"></use></svg>
+              Monterrey, NL
+            </span>
+          </figure>
+          <p class="hero__caption">Paca premium · Una pieza por modelo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         CINTA EDITORIAL
+    ========================================================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Live shopping</span><span class="marquee__sep">✦</span>
+        <span>Pacas premium</span><span class="marquee__sep">✦</span>
+        <span>Envíos a todo México</span><span class="marquee__sep">✦</span>
+        <span>Aparta por WhatsApp</span><span class="marquee__sep">✦</span>
+        <span>Una pieza por modelo</span><span class="marquee__sep">✦</span>
+        <span>Live shopping</span><span class="marquee__sep">✦</span>
+        <span>Pacas premium</span><span class="marquee__sep">✦</span>
+        <span>Envíos a todo México</span><span class="marquee__sep">✦</span>
+        <span>Aparta por WhatsApp</span><span class="marquee__sep">✦</span>
+        <span>Una pieza por modelo</span><span class="marquee__sep">✦</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================
+         LIVE
+    ========================================================== -->
+    <section class="live" id="live" aria-labelledby="liveTitle">
+      <div class="container">
+        <header class="live__head" data-reveal>
+          <div class="live__intro">
+            <p class="eyebrow eyebrow--light"><span class="live-dot"></span>Live shopping</p>
+            <h2 class="section-title section-title--light" id="liveTitle">El live de la semana</h2>
+            <p class="live__lede">Prendas nuevas, precios especiales y apartado en tiempo real. Conecta tu cámara o pega el enlace de tu transmisión.</p>
+          </div>
+          <div class="live__head-actions">
+            <button class="btn btn--ghost-light btn--sm" type="button" data-action="share-live">
+              <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+              Compartir
+            </button>
+            <a class="btn btn--gold btn--sm" href="https://wa.me/528123752627?text=Hola%20Miranda%2C%20av%C3%ADsame%20del%20pr%C3%B3ximo%20live%20por%20favor." target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+              Avisarme
+            </a>
+          </div>
+        </header>
+
+        <div class="live__grid">
+          <div class="live__stage-wrap" data-reveal>
+            <div class="live-stage" id="liveStage">
+              <img class="live-stage__poster" src="assets/hero-boutique.jpg" alt="Vista previa del live de Miranda Bazar" width="1200" height="1800">
+              <video class="live-stage__video" id="liveVideo" autoplay muted playsinline aria-label="Vista previa de la cámara"></video>
+              <iframe class="live-stage__frame" id="liveFrame" title="Transmisión en vivo" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" hidden></iframe>
+              <div class="live-stage__scrim" aria-hidden="true"></div>
+
+              <div class="live-stage__top">
+                <span class="live-badge" id="liveBadge">
+                  <span class="live-dot live-dot--light"></span>
+                  <span id="liveBadgeText">Próximo live</span>
+                </span>
+                <span class="live-stage__meta" id="liveTimer" data-next-live>Viernes · 8:30 PM</span>
+              </div>
+
+              <div class="live-stage__center" id="liveCenter">
+                <button class="live-start" type="button" data-action="start-live" aria-describedby="liveHint">
+                  <span class="live-start__play"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg></span>
+                  <span class="live-start__text">
+                    <strong>Iniciar EN VIVO</strong>
+                    <small>Activa tu cámara y muestra las prendas</small>
+                  </span>
+                </button>
+                <p class="live-stage__hint" id="liveHint">La cámara se muestra solo en este dispositivo.</p>
+              </div>
+
+              <div class="live-stage__controls" id="liveControls" hidden>
+                <button class="live-control" type="button" data-action="switch-camera">
+                  <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+                  Cambiar cámara
+                </button>
+                <button class="live-control" type="button" data-action="share-live">
+                  <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+                  Compartir
+                </button>
+                <button class="live-control live-control--danger" type="button" data-action="stop-live">
+                  Finalizar
+                </button>
+              </div>
+
+              <div class="live-stage__error" id="liveError" hidden></div>
+            </div>
+
+            <details class="live-connect" id="liveConnect">
+              <summary>
+                <svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>
+                Conectar mi transmisión de YouTube o Facebook
+              </summary>
+              <form class="live-connect__form" id="liveEmbedForm" novalidate>
+                <label class="visually-hidden" for="liveUrl">Enlace de la transmisión</label>
+                <input id="liveUrl" name="url" type="url" inputmode="url" placeholder="https://youtube.com/live/..." autocomplete="off">
+                <button class="btn btn--gold btn--sm" type="submit">Mostrar</button>
+                <button class="btn btn--ghost-light btn--sm" type="button" data-action="clear-embed">Quitar</button>
+              </form>
+              <p class="live-connect__note" id="liveEmbedNote">Pega el enlace de tu live de YouTube o Facebook. Se mostrará en el escenario para tus clientas.</p>
+            </details>
+          </div>
+
+          <aside class="live-rail" data-reveal aria-label="Producto y chat del live">
+            <article class="live-product">
+              <div class="live-rail__head">
+                <p class="live-rail__label">Ahora en pantalla</p>
+                <button class="live-rail__next" type="button" data-action="next-product" aria-label="Ver siguiente prenda">
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+                </button>
+              </div>
+              <div class="live-product__body">
+                <img class="live-product__img" id="liveProductImg" src="assets/productos/blusa.jpg" alt="" width="180" height="220">
+                <div class="live-product__info">
+                  <span class="live-product__cat" id="liveProductCat">Blusas</span>
+                  <h3 class="live-product__name" id="liveProductName">Blusa Aurora</h3>
+                  <p class="live-product__meta"><strong id="liveProductPrice">$185</strong> · Talla <span id="liveProductSize">M</span></p>
+                  <a class="btn btn--wa btn--sm" id="liveProductWa" href="https://wa.me/528123752627" target="_blank" rel="noopener">
+                    <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+                    Lo quiero
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <div class="live-chat">
+              <div class="live-chat__head">
+                <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+                <strong>Chat del live</strong>
+                <span class="live-chat__flag">local</span>
+              </div>
+              <div class="live-chat__messages" id="chatMessages" aria-live="polite"></div>
+              <form class="live-chat__form" id="chatForm">
+                <label class="visually-hidden" for="chatInput">Escribe un mensaje</label>
+                <input id="chatInput" type="text" maxlength="180" placeholder="Escribe un mensaje..." autocomplete="off">
+                <button type="submit" aria-label="Enviar mensaje">
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+                </button>
+              </form>
+              <p class="live-chat__foot">Los mensajes se guardan en este dispositivo.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         CATÁLOGO
+    ========================================================== -->
+    <section class="catalog" id="catalogo" aria-labelledby="catalogTitle">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div>
+            <p class="eyebrow"><span class="eyebrow__line"></span>Selección de la semana</p>
+            <h2 class="section-title" id="catalogTitle">Catálogo</h2>
+          </div>
+          <p class="section-head__aside"><strong id="catalogCount">0</strong> piezas disponibles · Aparta con $100</p>
+        </header>
+
+        <div class="chips" id="catalogFilters" role="group" aria-label="Filtrar catálogo por categoría" data-reveal></div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <div class="empty-state" id="catalogEmpty" hidden>
+          <span class="empty-state__icon"><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+          <h3>No hay piezas en esta categoría</h3>
+          <p>Muy pronto subiremos prendas nuevas. Síguenos en el live.</p>
+          <button class="btn btn--outline btn--sm" type="button" data-filter-reset>Ver todo el catálogo</button>
+        </div>
+
+        <p class="catalog__note">Cada prenda es única. Los colores pueden variar ligeramente según la pantalla.</p>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         HISTORIA
+    ========================================================== -->
+    <section class="about" id="historia" aria-labelledby="aboutTitle">
+      <div class="container about__grid">
+        <div class="about__content" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Nuestra historia</p>
+          <h2 class="section-title" id="aboutTitle">Curada a mano,<br>pensada para ti.</h2>
+          <p>Desde 2019 seleccionamos paca premium pieza por pieza en Monterrey. Creemos en la moda que se siente personal: pocas unidades, telas que duran y precios honestos.</p>
+          <p>Cada semana abrimos el bazar en vivo para mostrarte las prendas de cerca, resolver tus dudas y apartar tu favorita antes de que se vaya.</p>
+          <p class="signature">Miranda Sandoval</p>
+          <p class="signature__role">Fundadora · Bazar en línea</p>
+        </div>
+
+        <div class="about__cards" data-reveal>
+          <article class="feature-card">
+            <span class="feature-card__num">01</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg>
+            <h3>Envíos a todo México</h3>
+            <p>Empacamos con cuidado y enviamos por paquetería con guía rastreable.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__num">02</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
+            <h3>Aparta con $100</h3>
+            <p>Reserva tu prenda desde el live o por WhatsApp y liquídala en 48 horas.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__num">03</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-sparkle"></use></svg>
+            <h3>Piezas únicas</h3>
+            <p>Trabajamos una pieza por modelo. Si te gusta, es mejor no esperar.</p>
+          </article>
+          <article class="feature-card feature-card--gold">
+            <span class="feature-card__num">04</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+            <h3>Asesoría personal</h3>
+            <p>Te ayudamos a elegir talla, combinaciones y regalos por WhatsApp.</p>
+            <a class="link-arrow" href="https://wa.me/528123752627?text=Hola%20Miranda%2C%20necesito%20ayuda%20para%20elegir%20una%20prenda." target="_blank" rel="noopener">
+              Escríbenos
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         CONTACTO
+    ========================================================== -->
+    <section class="cta-band" id="contacto" aria-labelledby="contactTitle">
+      <div class="container cta-band__inner" data-reveal>
+        <div>
+          <p class="eyebrow"><span class="eyebrow__line"></span>Contacto</p>
+          <h2 class="section-title" id="contactTitle">¿Buscas una prenda<br>en especial?</h2>
+          <p class="cta-band__lede">Escríbenos y te ayudamos a encontrarla. Lun a sáb · 10:00 a 19:00 h.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--dark" href="https://wa.me/528123752627?text=Hola%20Miranda%2C%20busco%20una%20prenda%20en%20especial." target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+            Escribir por WhatsApp
+          </a>
+          <a class="btn btn--outline" href="#live">
+            <span class="live-dot"></span>
+            Ver el live
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       PIE DE PÁGINA
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand brand--light" href="#inicio" aria-label="Miranda Sandoval, ir al inicio">
+          <img class="brand__mark" src="assets/icon-192.png" alt="" width="44" height="44">
+          <span class="brand__text">
+            <strong>Miranda Sandoval</strong>
+            <span>Bazar en línea</span>
+          </span>
+        </a>
+        <p>Pacas premium y piezas únicas desde Monterrey, Nuevo León. Bazar en línea desde 2019.</p>
+        <a class="footer__wa" href="https://wa.me/528123752627" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+          +52 81 2375 2627
+        </a>
+      </div>
+
+      <nav class="footer__col" aria-label="Explorar">
+        <h3>Explorar</h3>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#live">En vivo</a>
+        <a href="#historia">Nosotras</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="footer__col">
+        <h3>Información</h3>
+        <p>Envíos nacionales</p>
+        <p>Apartado con $100</p>
+        <p>Pago por transferencia u Oxxo</p>
+        <p>Sin cambios en paca</p>
+      </div>
+
+      <div class="footer__col footer__col--app">
+        <h3>App Miranda Bazar</h3>
+        <p>Instálala en tu celular o computadora y recibe el live directo.</p>
+        <button class="btn btn--gold btn--sm" type="button" data-open="installModal">
+          <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+          Descargar app
+        </button>
+        <button class="footer__admin" type="button" data-action="open-admin">
+          <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+          Panel privado
+        </button>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> Miranda Sandoval · Bazar en línea. Todos los derechos reservados.</p>
+      <p>Hecho con cariño en Monterrey, NL.</p>
+      <button class="footer__admin footer__admin--inline" type="button" data-action="open-admin">
+        <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+        Acceso administradora
+      </button>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MODAL: LOGIN PRIVADO
+  ============================================================ -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__dialog modal__dialog--sm" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal__close" type="button" data-close aria-label="Cerrar acceso privado">
+        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+      </button>
+
+      <div class="login">
+        <span class="login__icon"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg></span>
+        <p class="eyebrow eyebrow--center">Acceso exclusivo</p>
+        <h2 class="login__title" id="loginTitle">Panel privado</h2>
+        <p class="login__lede">Ingresa la contraseña de la administradora para gestionar clientes y ropa.</p>
+
+        <form class="login__form" id="loginForm" novalidate>
+          <div class="field">
+            <label for="adminPassword">Contraseña</label>
+            <div class="input-eye">
+              <input id="adminPassword" name="password" type="password" autocomplete="current-password" placeholder="••••••••" aria-describedby="loginError" data-autofocus required>
+              <button class="input-eye__btn" id="togglePassword" type="button" aria-label="Mostrar contraseña">
+                <svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>
+              </button>
+            </div>
+          </div>
+          <p class="form-error" id="loginError" role="alert" hidden>Contraseña incorrecta. Inténtalo de nuevo.</p>
+          <button class="btn btn--gold btn--block" type="submit">
+            Entrar al panel
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </button>
+        </form>
+
+        <p class="login__note">Este acceso es solo para la administradora del bazar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: INSTALAR APP
+  ============================================================ -->
+  <div class="modal" id="installModal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__dialog modal__dialog--wide" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+      <button class="modal__close" type="button" data-close aria-label="Cerrar descarga de app">
+        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+      </button>
+
+      <div class="install">
+        <div class="install__head">
+          <img class="install__icon" src="assets/icon-192.png" alt="Icono de la app Miranda Bazar" width="64" height="64">
+          <div>
+            <p class="eyebrow">Aplicación</p>
+            <h2 class="install__title" id="installTitle">Lleva el bazar contigo</h2>
+            <p class="install__lede">Instala Miranda Bazar en tu celular o computadora. Se abre como app, funciona sin conexión y recibe los lives.</p>
+          </div>
+        </div>
+
+        <div class="install__cta" id="installAvailable" hidden>
+          <button class="btn btn--gold" id="installBtn" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+            Instalar ahora
+          </button>
+        </div>
+
+        <div class="install__installed" id="installInstalled" hidden>
+          <span class="install__check"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+          <p>La app ya está instalada en este dispositivo.</p>
+        </div>
+
+        <div class="install__grid">
+          <article class="install-card">
+            <span class="install-card__os">Android</span>
+            <h3>Chrome o Edge</h3>
+            <ol>
+              <li>Abre esta web en Chrome.</li>
+              <li>Toca el menú de tres puntos.</li>
+              <li>Elige <strong>Instalar aplicación</strong> o <strong>Añadir a pantalla de inicio</strong>.</li>
+            </ol>
+          </article>
+          <article class="install-card">
+            <span class="install-card__os">iPhone / iPad</span>
+            <h3>Safari</h3>
+            <ol>
+              <li>Abre esta web en Safari.</li>
+              <li>Toca el botón <strong>Compartir</strong>.</li>
+              <li>Elige <strong>Añadir a pantalla de inicio</strong> y confirma.</li>
+            </ol>
+          </article>
+          <article class="install-card">
+            <span class="install-card__os">Windows / Mac</span>
+            <h3>Chrome o Edge</h3>
+            <ol>
+              <li>Abre esta web en el navegador.</li>
+              <li>Busca el icono de instalar en la barra de direcciones.</li>
+              <li>Confirma para crear el acceso en tu escritorio.</li>
+            </ol>
+          </article>
+        </div>
+
+        <p class="install__note" id="installNote">La instalación necesita que la web esté publicada con HTTPS o abierta en localhost.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: DETALLE DE PRENDA
+  ============================================================ -->
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__dialog modal__dialog--product" role="dialog" aria-modal="true" aria-labelledby="pdName">
+      <button class="modal__close modal__close--float" type="button" data-close aria-label="Cerrar detalle">
+        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+      </button>
+      <div class="product-detail">
+        <div class="product-detail__media">
+          <img id="pdImage" src="assets/productos/blusa.jpg" alt="" width="900" height="900">
+        </div>
+        <div class="product-detail__body">
+          <p class="eyebrow" id="pdCat">Blusas</p>
+          <h2 class="product-detail__name" id="pdName">Blusa Aurora</h2>
+          <p class="product-detail__price" id="pdPrice">$185</p>
+          <dl class="product-detail__meta">
+            <div><dt>Talla</dt><dd id="pdSize">M</dd></div>
+            <div><dt>Condición</dt><dd id="pdCond">Excelente</dd></div>
+            <div><dt>Apartado</dt><dd>$100</dd></div>
+          </dl>
+          <p class="product-detail__desc" id="pdDesc"></p>
+          <a class="btn btn--dark btn--block" id="pdWa" href="https://wa.me/528123752627" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+            Apartar por WhatsApp
+          </a>
+          <p class="product-detail__note">Pieza única · Envíos a todo México · Apartado válido por 48 h.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PANEL PRIVADO (ADMIN)
+  ============================================================ -->
+  <div class="admin" id="adminPanel" aria-hidden="true">
+    <div class="admin__shell" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <aside class="admin__sidebar">
+        <div class="admin__brand">
+          <img src="assets/icon-192.png" alt="" width="40" height="40">
+          <div>
+            <strong>Panel privado</strong>
+            <span>Miranda Bazar</span>
+          </div>
+        </div>
+
+        <nav class="admin__nav" role="tablist" aria-label="Secciones del panel">
+          <button class="admin-tab is-active" type="button" role="tab" id="tabClientes" aria-selected="true" aria-controls="panelClientes" data-tab="clientes">
+            <svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>
+            Clientes
+            <span class="admin-tab__count" id="tabClientCount">0</span>
+          </button>
+          <button class="admin-tab" type="button" role="tab" id="tabRopa" aria-selected="false" aria-controls="panelRopa" data-tab="ropa">
+            <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
+            Ropa
+            <span class="admin-tab__count" id="tabRopaCount">0</span>
+          </button>
+        </nav>
+
+        <div class="admin__stats" aria-label="Resumen">
+          <div class="admin-stat">
+            <span>Clientes</span>
+            <strong id="statClients">0</strong>
+          </div>
+          <div class="admin-stat">
+            <span>VIP</span>
+            <strong id="statVip">0</strong>
+          </div>
+          <div class="admin-stat">
+            <span>Gasto total</span>
+            <strong id="statSpend">$0</strong>
+          </div>
+          <div class="admin-stat">
+            <span>Inventario</span>
+            <strong id="statRopa">$0</strong>
+          </div>
+        </div>
+
+        <div class="admin__sidebar-foot">
+          <p>Los datos se guardan en este dispositivo.</p>
+          <button class="btn btn--ghost-light btn--sm btn--block" type="button" data-action="logout">
+            <svg class="icon" aria-hidden="true"><use href="#i-logout"></use></svg>
+            Cerrar sesión
+          </button>
+        </div>
+      </aside>
+
+      <div class="admin__main">
+        <header class="admin__topbar">
+          <div>
+            <p class="admin__eyebrow">Administración</p>
+            <h2 id="adminTitle">Clientes</h2>
+          </div>
+          <button class="admin__close" type="button" data-action="close-admin" aria-label="Cerrar panel privado">
+            <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+          </button>
+        </header>
+
+        <div class="admin__scroll" id="adminScroll">
+          <!-- ---------------- CLIENTES ---------------- -->
+          <section class="admin-panel is-active" id="panelClientes" role="tabpanel" aria-labelledby="tabClientes" data-panel="clientes">
+            <form class="admin-form" id="clientForm" novalidate>
+              <div class="admin-form__head">
+                <div>
+                  <p class="admin-form__kicker">CRM</p>
+                  <h3>Agregar cliente</h3>
+                </div>
+                <span class="admin-form__badge"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>Nuevo registro</span>
+              </div>
+
+              <div class="form-grid">
+                <div class="field field--full">
+                  <label for="clientName">Nombre completo <span aria-hidden="true">*</span></label>
+                  <input id="clientName" name="nombre" type="text" maxlength="80" autocomplete="name" placeholder="Ej. Fernanda Ríos" required>
+                </div>
+                <div class="field">
+                  <label for="clientPhone">WhatsApp <span aria-hidden="true">*</span></label>
+                  <div class="input-prefix">
+                    <span>+52</span>
+                    <input id="clientPhone" name="whatsapp" type="tel" inputmode="tel" maxlength="14" autocomplete="tel-national" placeholder="81 1234 5678" required>
+                  </div>
+                  <small class="field__hint">10 dígitos, sin lada del país.</small>
+                </div>
+                <div class="field">
+                  <label for="clientSize">Talla habitual</label>
+                  <select id="clientSize" name="talla">
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M" selected>M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    <option value="Única">Única</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="clientStatus">Estado</label>
+                  <select id="clientStatus" name="estado">
+                    <option value="Nueva">Nueva</option>
+                    <option value="Frecuente">Frecuente</option>
+                    <option value="VIP">VIP</option>
+                    <option value="Apartado">Apartado</option>
+                    <option value="Deudor">Deudor</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="clientColony">Colonia</label>
+                  <input id="clientColony" name="colonia" type="text" maxlength="60" placeholder="Ej. Del Valle">
+                </div>
+                <div class="field">
+                  <label for="clientCity">Ciudad</label>
+                  <input id="clientCity" name="ciudad" type="text" maxlength="60" value="Monterrey">
+                </div>
+                <div class="field">
+                  <label for="clientSpend">Gasto acumulado</label>
+                  <div class="input-prefix input-prefix--money">
+                    <span>$</span>
+                    <input id="clientSpend" name="gasto" type="number" min="0" step="10" value="0" inputmode="decimal">
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="clientPurchases">Compras realizadas</label>
+                  <input id="clientPurchases" name="compras" type="number" min="0" step="1" value="0" inputmode="numeric">
+                </div>
+                <div class="field field--full">
+                  <label for="clientNotes">Notas</label>
+                  <textarea id="clientNotes" name="notas" rows="2" maxlength="240" placeholder="Preferencias, talla, dirección, recordatorios..."></textarea>
+                </div>
+              </div>
+
+              <div class="admin-form__actions">
+                <button class="btn btn--gold" type="submit">
+                  <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                  Agregar cliente
+                </button>
+                <p class="admin-form__hint">El registro aparecerá en tu CRM al instante.</p>
+              </div>
+            </form>
+
+            <div class="admin-list">
+              <div class="admin-list__head">
+                <div>
+                  <h3>Clientes registrados</h3>
+                  <p><span id="clientCount">0</span> en total</p>
+                </div>
+                <div class="admin-list__tools">
+                  <div class="search">
+                    <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                    <label class="visually-hidden" for="clientSearch">Buscar cliente</label>
+                    <input id="clientSearch" type="search" placeholder="Buscar cliente..." autocomplete="off">
+                  </div>
+                  <button class="btn btn--outline btn--sm" type="button" id="exportClients">
+                    <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                    CSV
+                  </button>
+                  <button class="btn btn--outline btn--sm" type="button" id="copyBroadcast">
+                    <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+                    Difundir live
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Cliente</th>
+                      <th scope="col">WhatsApp</th>
+                      <th scope="col">Talla</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col">Gasto</th>
+                      <th scope="col" class="data-table__actions">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="clientTableBody"></tbody>
+                </table>
+              </div>
+              <div class="admin-empty" id="clientEmpty" hidden>
+                <p>Todavía no hay clientes registrados. Agrega el primero con el formulario de arriba.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ---------------- ROPA ---------------- -->
+          <section class="admin-panel" id="panelRopa" role="tabpanel" aria-labelledby="tabRopa" data-panel="ropa" hidden>
+            <form class="admin-form" id="ropaForm" novalidate>
+              <div class="admin-form__head">
+                <div>
+                  <p class="admin-form__kicker">Inventario</p>
+                  <h3>Agregar prenda</h3>
+                </div>
+                <span class="admin-form__badge"><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>Catálogo</span>
+              </div>
+
+              <div class="form-grid">
+                <div class="field field--full">
+                  <label for="ropaName">Nombre de la prenda <span aria-hidden="true">*</span></label>
+                  <input id="ropaName" name="nombre" type="text" maxlength="80" placeholder="Ej. Blusa Aurora" required>
+                </div>
+                <div class="field">
+                  <label for="ropaCategory">Categoría <span aria-hidden="true">*</span></label>
+                  <select id="ropaCategory" name="categoria" required>
+                    <option value="Blusas">Blusas</option>
+                    <option value="Jeans">Jeans</option>
+                    <option value="Vestidos">Vestidos</option>
+                    <option value="Chamarras">Chamarras</option>
+                    <option value="Faldas">Faldas</option>
+                    <option value="Suéteres">Suéteres</option>
+                    <option value="Blazers">Blazers</option>
+                    <option value="Accesorios">Accesorios</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="ropaSize">Talla <span aria-hidden="true">*</span></label>
+                  <select id="ropaSize" name="talla" required>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M" selected>M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    <option value="Única">Única</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="ropaPrice">Precio <span aria-hidden="true">*</span></label>
+                  <div class="input-prefix input-prefix--money">
+                    <span>$</span>
+                    <input id="ropaPrice" name="precio" type="number" min="0" step="10" placeholder="385" inputmode="decimal" required>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="ropaCondition">Condición</label>
+                  <select id="ropaCondition" name="condicion">
+                    <option value="Excelente">Excelente</option>
+                    <option value="Buena">Buena</option>
+                    <option value="Detalle">Detalle</option>
+                  </select>
+                </div>
+                <div class="field field--full">
+                  <label for="ropaDesc">Descripción</label>
+                  <textarea id="ropaDesc" name="descripcion" rows="2" maxlength="240" placeholder="Tela, medidas, detalles de la pieza..."></textarea>
+                </div>
+                <div class="field field--full">
+                  <label for="ropaImage">Foto de la prenda</label>
+                  <div class="upload">
+                    <label class="upload__drop" for="ropaImage">
+                      <svg class="icon" aria-hidden="true"><use href="#i-upload"></use></svg>
+                      <span><strong>Subir foto</strong> o arrastra una imagen aquí</span>
+                      <small>JPG o PNG · se optimiza automáticamente</small>
+                    </label>
+                    <input id="ropaImage" name="imagen" type="file" accept="image/*" class="visually-hidden">
+                    <div class="upload__preview" id="ropaPreview" hidden>
+                      <img id="ropaPreviewImg" src="" alt="Vista previa de la prenda">
+                      <button class="upload__remove" type="button" id="ropaRemoveImage" aria-label="Quitar imagen">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="field field--full">
+                  <label for="ropaImageUrl">O pega una URL de imagen</label>
+                  <input id="ropaImageUrl" name="imagenUrl" type="url" placeholder="https://..." autocomplete="off">
+                </div>
+                <div class="field field--full">
+                  <label class="switch">
+                    <input id="ropaFeatured" name="destacada" type="checkbox">
+                    <span class="switch__track" aria-hidden="true"><span></span></span>
+                    <span class="switch__label">Destacar en la portada y en el live</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="admin-form__actions">
+                <button class="btn btn--gold" type="submit">
+                  <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                  Agregar prenda
+                </button>
+                <p class="admin-form__hint">La prenda aparecerá en el catálogo al instante.</p>
+              </div>
+            </form>
+
+            <div class="admin-list">
+              <div class="admin-list__head">
+                <div>
+                  <h3>Inventario actual</h3>
+                  <p><span id="ropaCount">0</span> prendas · Valor <strong id="ropaValue">$0</strong></p>
+                </div>
+                <div class="admin-list__tools">
+                  <div class="search">
+                    <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                    <label class="visually-hidden" for="ropaSearch">Buscar prenda</label>
+                    <input id="ropaSearch" type="search" placeholder="Buscar prenda..." autocomplete="off">
+                  </div>
+                  <button class="btn btn--outline btn--sm" type="button" id="exportRopa">
+                    <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                    JSON
+                  </button>
+                </div>
+              </div>
+
+              <div class="ropa-list" id="ropaList"></div>
+              <div class="admin-empty" id="ropaEmpty" hidden>
+                <p>No hay prendas registradas. Agrega la primera con el formulario de arriba.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+    <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+    <span id="toastText"></span>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
