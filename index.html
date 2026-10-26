@@ -219,6 +219,28 @@
                 </a>
               </div>
             </div>
+
+            <div class="live-share" id="publicLiveShare" hidden>
+              <span class="live-share__label">Comparte el live</span>
+              <div class="live-share__actions">
+                <a class="btn btn--gold btn--sm" id="publicLiveOpen" href="#" target="_blank" rel="noopener">
+                  <svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>
+                  <span id="publicLiveOpenText">Ver en YouTube</span>
+                </a>
+                <a class="btn btn--wa btn--sm" id="publicShareWa" href="https://wa.me/" target="_blank" rel="noopener">
+                  <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+                  WhatsApp
+                </a>
+                <a class="btn btn--ghost-light btn--sm" id="publicShareFb" href="https://www.facebook.com/" target="_blank" rel="noopener">
+                  <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+                  Facebook
+                </a>
+                <button class="btn btn--ghost-light btn--sm" type="button" data-action="copy-public-live">
+                  <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+                  Copiar enlace
+                </button>
+              </div>
+            </div>
           </div>
 
           <aside class="live-rail" data-reveal aria-label="Producto y chat del live">
@@ -944,6 +966,10 @@
                   <div class="admin-live__card">
                     <h4>Conectar mi transmisión</h4>
                     <p class="admin-live__card-lede">YouTube o Facebook</p>
+                    <div class="admin-live__launch">
+                      <a class="admin-live__launch-link" href="https://studio.youtube.com/" target="_blank" rel="noopener">Abrir YouTube Studio</a>
+                      <a class="admin-live__launch-link" href="https://www.facebook.com/live/producer" target="_blank" rel="noopener">Abrir Facebook Live</a>
+                    </div>
                     <form class="admin-live__form" id="liveEmbedForm" novalidate>
                       <label for="liveUrl">Enlace del video en vivo</label>
                       <input id="liveUrl" name="url" type="url" inputmode="url" placeholder="https://youtube.com/live/..." autocomplete="off">
@@ -957,6 +983,16 @@
                       <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
                       Copiar enlace para clientas
                     </button>
+                    <div class="admin-live__share" id="adminLiveShare" hidden>
+                      <a class="btn btn--wa btn--sm" id="adminShareWa" href="https://wa.me/" target="_blank" rel="noopener">
+                        <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+                        WhatsApp
+                      </a>
+                      <a class="btn btn--outline btn--sm" id="adminShareFb" href="https://www.facebook.com/" target="_blank" rel="noopener">
+                        <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+                        Facebook
+                      </a>
+                    </div>
                   </div>
 
                   <div class="admin-live__card admin-live__card--soft">

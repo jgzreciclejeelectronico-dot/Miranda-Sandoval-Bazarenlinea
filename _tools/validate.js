@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const root = path.join(__dirname, "..", "miranda-bazar");
+const root = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const sw = fs.readFileSync(path.join(root, "sw.js"), "utf8");
 

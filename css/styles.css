@@ -1063,6 +1063,37 @@ table {
   min-width: 0;
 }
 
+.live-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 249, 0.06);
+}
+
+.live-share[hidden] {
+  display: none;
+}
+
+.live-share__label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-2);
+}
+
+.live-share__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .live-stage {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -2798,6 +2829,26 @@ table {
   color: var(--gold-deep);
 }
 
+.admin-live__launch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin: 8px 0 12px;
+}
+
+.admin-live__launch-link {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--gold-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.admin-live__launch-link:hover {
+  color: var(--ink);
+}
+
 .admin-live__form {
   margin-top: 12px;
 }
@@ -2853,6 +2904,21 @@ table {
 
 .admin-live__copy {
   margin-top: 12px;
+}
+
+.admin-live__share {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.admin-live__share[hidden] {
+  display: none;
+}
+
+.admin-live__share .btn {
+  justify-content: center;
 }
 
 .admin-live__card--soft {
@@ -4012,6 +4078,25 @@ table {
 
   .admin-live__form-actions .btn {
     flex: 1 1 100%;
+  }
+
+  .live-share {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .live-share__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .live-share__actions .btn {
+    justify-content: center;
+  }
+
+  .admin-live__share {
+    grid-template-columns: 1fr;
   }
 
   .admin-form__badge {

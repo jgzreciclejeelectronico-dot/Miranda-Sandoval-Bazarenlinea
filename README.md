@@ -90,11 +90,14 @@ Cambia ambos valores y vuelve a publicar.
 La página pública **solo reproduce** el live: no tiene botones para iniciar cámara ni para conectar transmisiones. Todo se controla desde **Panel privado → En vivo**.
 
 - **Iniciar EN VIVO**: enciende la cámara y muestra una vista previa **solo en tu dispositivo**. No transmite video a otras personas.
+- **Abrir YouTube Studio / Facebook Live**: accesos directos para iniciar ahí tu transmisión con cámara o desde el celular.
 - **Conectar mi transmisión**: pega el enlace de un live de **YouTube** o **Facebook** (desde el navegador o la app). La transmisión aparece integrada en el panel y en la página pública.
 - **Copiar enlace para clientas**: genera una dirección con la transmisión incluida. Compártela por WhatsApp; quien la abra verá el live en la sección **En vivo**.
+- Al conectar la transmisión aparecen botones para **compartir en WhatsApp y Facebook**, tanto en el panel como en la página pública.
 - **Quitar**: desconecta la transmisión y la página pública vuelve al mensaje de “próximo live”.
 - El chat del sitio se guarda localmente, no es un chat multiusuario.
-- El live debe ser **público** en YouTube o Facebook para que el reproductor integrado lo muestre. Un live con cámara propia, espectadores y chat en tiempo real requiere un servidor de video y un backend (por ejemplo WebRTC + Firebase). No está incluido.
+- El live debe ser **público** en YouTube o Facebook para que el reproductor integrado lo muestre.
+- El navegador **no puede transmitir la cámara por sí solo** a la web, la app y las redes: hace falta un servicio de video. La vía gratuita y estable es YouTube o Facebook. Para transmisión directa desde la web se necesita un servicio como LiveKit, Agora o Mux (cuenta y credenciales).
 
 ## 7. Llevarla a las tiendas de aplicaciones
 

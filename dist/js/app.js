@@ -770,6 +770,36 @@
     return base + "#live";
   }
 
+  function updateLiveShareLinks() {
+    var live = Boolean(state.live.embed);
+    var publicShare = $("#publicLiveShare");
+    var adminShare = $("#adminLiveShare");
+    if (publicShare) publicShare.hidden = !live;
+    if (adminShare) adminShare.hidden = !live;
+    if (!live) return;
+
+    var url = liveShareUrl();
+    var text =
+      "¡Estamos EN VIVO en Miranda Bazar! Piezas únicas y precios especiales. " + url;
+    var wa = "https://wa.me/?text=" + encodeURIComponent(text);
+    var fb =
+      "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+
+    ["publicShareWa", "adminShareWa"].forEach(function (id) {
+      var link = document.getElementById(id);
+      if (link) link.href = wa;
+    });
+    ["publicShareFb", "adminShareFb"].forEach(function (id) {
+      var link = document.getElementById(id);
+      if (link) link.href = fb;
+    });
+
+    var open = document.getElementById("publicLiveOpen");
+    var openText = document.getElementById("publicLiveOpenText");
+    if (open) open.href = state.live.embed.raw || "#";
+    if (openText) openText.textContent = "Ver en " + state.live.embed.platform;
+  }
+
   function applyPublicEmbed(parsed) {
     var viewer = $("#publicLiveViewer");
     var frame = $("#publicLiveFrame");
@@ -785,6 +815,7 @@
     if (badge) badge.textContent = "EN VIVO";
     if (meta) meta.textContent = parsed.platform + " · en vivo";
     viewer.classList.add("is-embed", "is-live");
+    updateLiveShareLinks();
   }
 
   function clearPublicEmbed() {
@@ -803,6 +834,7 @@
     if (badge) badge.textContent = "Próximo live";
     if (meta) meta.textContent = nextLiveLabel();
     if (viewer) viewer.classList.remove("is-embed", "is-live");
+    updateLiveShareLinks();
   }
 
   function applyAdminEmbed(parsed) {
@@ -822,6 +854,7 @@
     stage.classList.add("is-embed", "is-live");
     if (badge) badge.textContent = "EN VIVO";
     if (timer) timer.textContent = parsed.platform + " · conectado";
+    updateLiveShareLinks();
   }
 
   function clearEmbed(silent) {
@@ -1117,6 +1150,15 @@
     copyText(liveShareUrl()).then(function (ok) {
       toast(
         ok ? "Enlace para clientas copiado." : "No se pudo copiar el enlace.",
+        ok ? undefined : "error"
+      );
+    });
+  }
+
+  function copyPublicLive() {
+    copyText(liveShareUrl()).then(function (ok) {
+      toast(
+        ok ? "Enlace del live copiado." : "No se pudo copiar el enlace.",
         ok ? undefined : "error"
       );
     });
@@ -2072,6 +2114,9 @@
     });
     $$("[data-action='copy-live-link']").forEach(function (button) {
       button.addEventListener("click", copyLiveLink);
+    });
+    $$("[data-action='copy-public-live']").forEach(function (button) {
+      button.addEventListener("click", copyPublicLive);
     });
 
     var embedForm = $("#liveEmbedForm");
