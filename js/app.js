@@ -32,6 +32,7 @@
       clients: "ms_clients_v2",
       ropa: "ms_ropa_v2",
       chat: "ms_chat_v1",
+      liveEmbed: "ms_live_embed_v1",
       session: "ms_admin_session"
     }
   };
@@ -737,29 +738,106 @@
     return "No pudimos abrir la cámara. Revisa los permisos e intenta de nuevo.";
   }
 
-  function clearEmbed(silent) {
-    var frame = $("#liveFrame");
-    var poster = $(".live-stage__poster");
-    var center = $("#liveCenter");
-    var stage = liveStage();
-    if (!frame) return;
-    frame.hidden = true;
-    frame.src = "about:blank";
+  function readLiveEmbed() {
+    try {
+      return localStorage.getItem(CONFIG.store.liveEmbed) || "";
+    } catch (err) {
+      return "";
+    }
+  }
+
+  function saveLiveEmbed(raw) {
+    try {
+      localStorage.setItem(CONFIG.store.liveEmbed, raw);
+    } catch (err) {
+      /* almacenamiento no disponible */
+    }
+  }
+
+  function removeLiveEmbed() {
+    try {
+      localStorage.removeItem(CONFIG.store.liveEmbed);
+    } catch (err) {
+      /* almacenamiento no disponible */
+    }
+  }
+
+  function liveShareUrl() {
+    var base = location.href.split(/[?#]/)[0];
+    if (state.live.embed && state.live.embed.raw) {
+      return base + "?live=" + encodeURIComponent(state.live.embed.raw) + "#live";
+    }
+    return base + "#live";
+  }
+
+  function applyPublicEmbed(parsed) {
+    var viewer = $("#publicLiveViewer");
+    var frame = $("#publicLiveFrame");
+    var poster = $("#publicLiveViewer .live-stage__poster");
+    var center = $("#publicLiveCenter");
+    var badge = $("#publicLiveBadgeText");
+    var meta = $("#publicLiveMeta");
+    if (!viewer || !frame) return;
+    frame.src = parsed.src;
+    frame.hidden = false;
+    if (poster) poster.hidden = true;
+    if (center) center.hidden = true;
+    if (badge) badge.textContent = "EN VIVO";
+    if (meta) meta.textContent = parsed.platform + " · en vivo";
+    viewer.classList.add("is-embed", "is-live");
+  }
+
+  function clearPublicEmbed() {
+    var viewer = $("#publicLiveViewer");
+    var frame = $("#publicLiveFrame");
+    var poster = $("#publicLiveViewer .live-stage__poster");
+    var center = $("#publicLiveCenter");
+    var badge = $("#publicLiveBadgeText");
+    var meta = $("#publicLiveMeta");
+    if (frame) {
+      frame.hidden = true;
+      frame.src = "about:blank";
+    }
     if (poster) poster.hidden = false;
     if (center) center.hidden = false;
-    if (stage) stage.classList.remove("is-embed");
-    state.live.embed = null;
-    var badge = $("#liveBadgeText");
     if (badge) badge.textContent = "Próximo live";
+    if (meta) meta.textContent = nextLiveLabel();
+    if (viewer) viewer.classList.remove("is-embed", "is-live");
+  }
+
+  function applyAdminEmbed(parsed) {
+    var stage = liveStage();
+    var poster = $("#liveStage .live-stage__poster");
+    var center = $("#liveCenter");
+    var controls = $("#liveControls");
+    var frame = $("#liveFrame");
+    var badge = $("#liveBadgeText");
     var timer = $("#liveTimer");
-    if (timer) timer.textContent = nextLiveLabel();
+    if (!stage || !frame) return;
+    if (poster) poster.hidden = true;
+    if (center) center.hidden = true;
+    if (controls) controls.hidden = true;
+    frame.hidden = false;
+    frame.src = parsed.src;
+    stage.classList.add("is-embed", "is-live");
+    if (badge) badge.textContent = "EN VIVO";
+    if (timer) timer.textContent = parsed.platform + " · conectado";
+  }
+
+  function clearEmbed(silent) {
+    stopTracks();
+    stopLiveTimer();
+    state.live.embed = null;
+    removeLiveEmbed();
+    resetLiveUi();
+    clearPublicEmbed();
     hideLiveError();
-    if (!silent) toast("Transmisión incrustada eliminada.");
+    if (!silent) toast("Transmisión desconectada.");
   }
 
   function resetLiveUi() {
     var stage = liveStage();
-    var poster = $(".live-stage__poster");
+    var poster = $("#liveStage .live-stage__poster");
     var center = $("#liveCenter");
     var controls = $("#liveControls");
     var frame = $("#liveFrame");
@@ -773,8 +851,7 @@
     }
     if (center) center.hidden = false;
     if (controls) controls.hidden = true;
-    if (badge) badge.textContent = "Próximo live";
-    state.live.embed = null;
+    if (badge) badge.textContent = "Cámara apagada";
   }
 
   async function startLive() {
@@ -801,15 +878,13 @@
         audio: false
       });
 
-      if (state.live.embed) clearEmbed(true);
-
       state.live.stream = stream;
       var video = $("#liveVideo");
       video.srcObject = stream;
       video.play().catch(function () {});
 
       var stage = liveStage();
-      var poster = $(".live-stage__poster");
+      var poster = $("#liveStage .live-stage__poster");
       var center = $("#liveCenter");
       var controls = $("#liveControls");
       var badge = $("#liveBadgeText");
@@ -827,15 +902,16 @@
       startLiveTimer();
       pushChatMessage({
         name: "Sistema",
-        text: "Transmisión iniciada desde este dispositivo.",
+        text: "Cámara de vista previa iniciada desde el panel privado.",
         type: "system"
       });
-      toast("Estás en vivo. La cámara se ve solo en este dispositivo.");
+      toast("Cámara activada. Se ve solo en el panel privado.");
       return true;
     } catch (error) {
       stopTracks();
       stopLiveTimer();
       resetLiveUi();
+      if (state.live.embed) applyAdminEmbed(state.live.embed);
       showLiveError(cameraErrorMessage(error));
       toast("No pudimos iniciar la cámara.", "error");
       return false;
@@ -848,8 +924,9 @@
     stopTracks();
     stopLiveTimer();
     resetLiveUi();
+    if (state.live.embed) applyAdminEmbed(state.live.embed);
     hideLiveError();
-    toast("Transmisión finalizada.");
+    toast("Cámara finalizada.");
   }
 
   async function switchCamera() {
@@ -924,36 +1001,56 @@
     }
 
     stopTracks();
-    clearInterval(state.live.timer);
-    state.live.timer = null;
-    state.live.startedAt = 0;
+    stopLiveTimer();
 
-    var stage = liveStage();
-    var poster = $(".live-stage__poster");
-    var center = $("#liveCenter");
-    var controls = $("#liveControls");
-    var frame = $("#liveFrame");
-    var badge = $("#liveBadgeText");
-    var timer = $("#liveTimer");
-
-    poster.hidden = true;
-    center.hidden = true;
-    controls.hidden = true;
-    frame.hidden = false;
-    frame.src = parsed.src;
-    stage.classList.remove("is-live");
-    stage.classList.add("is-embed");
-    badge.textContent = "EN VIVO";
-    timer.textContent = parsed.platform + " · incrustado";
+    parsed.raw = raw;
     state.live.embed = parsed;
+    saveLiveEmbed(raw);
+    applyAdminEmbed(parsed);
+    applyPublicEmbed(parsed);
+
+    var input = $("#liveUrl");
+    if (input) input.value = raw;
     if (note) {
       note.textContent =
         "Transmisión de " +
         parsed.platform +
-        " cargada. Si no aparece, revisa que el video esté público o vuelve a pegar el enlace.";
+        " conectada. Comparte el enlace con tus clientas para que la vean.";
     }
     hideLiveError();
-    toast("Transmisión de " + parsed.platform + " cargada.");
+    toast("Transmisión de " + parsed.platform + " conectada.");
+  }
+
+  function restoreLiveEmbed() {
+    var candidates = [];
+    try {
+      var shared = new URLSearchParams(location.search).get("live");
+      if (shared) candidates.push(shared);
+    } catch (err) {
+      /* sin parámetros */
+    }
+    var saved = readLiveEmbed();
+    if (saved) candidates.push(saved);
+
+    for (var i = 0; i < candidates.length; i += 1) {
+      var raw = candidates[i];
+      var parsed = parseLiveUrl(raw);
+      if (!parsed) continue;
+      parsed.raw = raw;
+      state.live.embed = parsed;
+      var input = $("#liveUrl");
+      if (input) input.value = raw;
+      applyAdminEmbed(parsed);
+      applyPublicEmbed(parsed);
+      var note = $("#liveEmbedNote");
+      if (note) {
+        note.textContent =
+          "Transmisión de " +
+          parsed.platform +
+          " conectada. Comparte el enlace con tus clientas para que la vean.";
+      }
+      return;
+    }
   }
 
   function renderChat() {
@@ -987,8 +1084,10 @@
   }
 
   async function shareLive() {
-    var url = location.href.split("#")[0] + "#live";
-    var text = "¡Estamos EN VIVO en Miranda Bazar! Piezas únicas y precios especiales.";
+    var url = liveShareUrl();
+    var text = state.live.embed
+      ? "¡Estamos EN VIVO en Miranda Bazar! Piezas únicas y precios especiales."
+      : "Te esperamos en el próximo live de Miranda Bazar: piezas únicas y precios especiales.";
     var shareData = {
       title: "Miranda Sandoval · Bazar en Línea",
       text: text + " " + url
@@ -1008,6 +1107,19 @@
       ok ? "Enlace del live copiado. Compártelo por WhatsApp." : "No se pudo copiar el enlace.",
       ok ? undefined : "error"
     );
+  }
+
+  function copyLiveLink() {
+    if (!state.live.embed) {
+      toast("Primero conecta tu transmisión de YouTube o Facebook.", "error");
+      return;
+    }
+    copyText(liveShareUrl()).then(function (ok) {
+      toast(
+        ok ? "Enlace para clientas copiado." : "No se pudo copiar el enlace.",
+        ok ? undefined : "error"
+      );
+    });
   }
 
   /* ==========================================================================
@@ -1097,7 +1209,9 @@
     });
 
     var title = $("#adminTitle");
-    if (title) title.textContent = tab === "ropa" ? "Ropa" : "Clientes";
+    if (title) {
+      title.textContent = tab === "ropa" ? "Ropa" : tab === "live" ? "En vivo" : "Clientes";
+    }
     var scroll = $("#adminScroll");
     if (scroll) scroll.scrollTop = 0;
   }
@@ -1561,7 +1675,7 @@
   }
 
   function copyBroadcast() {
-    var url = location.href.split("#")[0] + "#live";
+    var url = liveShareUrl();
     var message =
       "¡Hola! ✨ Hoy tenemos live en Miranda Bazar: piezas nuevas, precios especiales y apartado con $100. Te esperamos: " +
       url;
@@ -1952,9 +2066,12 @@
         var note = $("#liveEmbedNote");
         if (note) {
           note.textContent =
-            "Pega el enlace de tu live de YouTube o Facebook. Se mostrará en el escenario para tus clientas.";
+            "Pega el enlace de tu live de YouTube o Facebook. Se mostrará en la sección En vivo.";
         }
       });
+    });
+    $$("[data-action='copy-live-link']").forEach(function (button) {
+      button.addEventListener("click", copyLiveLink);
     });
 
     var embedForm = $("#liveEmbedForm");
@@ -1979,6 +2096,7 @@
     }
 
     renderChat();
+    restoreLiveEmbed();
   }
 
   function setupNavigation() {

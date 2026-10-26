@@ -182,7 +182,7 @@
           <div class="live__intro">
             <p class="eyebrow eyebrow--light"><span class="live-dot"></span>Live shopping</p>
             <h2 class="section-title section-title--light" id="liveTitle">El live de la semana</h2>
-            <p class="live__lede">Prendas nuevas, precios especiales y apartado en tiempo real. Conecta tu cámara o pega el enlace de tu transmisión.</p>
+            <p class="live__lede">Cuando estemos transmitiendo, aquí podrás vernos en vivo. Mientras tanto, aparta tu pieza favorita por WhatsApp y recibe en todo México.</p>
           </div>
           <div class="live__head-actions">
             <button class="btn btn--ghost-light btn--sm" type="button" data-action="share-live">
@@ -198,61 +198,27 @@
 
         <div class="live__grid">
           <div class="live__stage-wrap" data-reveal>
-            <div class="live-stage" id="liveStage">
+            <div class="live-stage live-stage--viewer" id="publicLiveViewer">
               <img class="live-stage__poster" src="assets/hero-boutique.jpg" alt="Vista previa del live de Miranda Bazar" width="1200" height="1800">
-              <video class="live-stage__video" id="liveVideo" autoplay muted playsinline aria-label="Vista previa de la cámara"></video>
-              <iframe class="live-stage__frame" id="liveFrame" title="Transmisión en vivo" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" hidden></iframe>
+              <iframe class="live-stage__frame" id="publicLiveFrame" title="Transmisión en vivo" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" hidden></iframe>
               <div class="live-stage__scrim" aria-hidden="true"></div>
 
               <div class="live-stage__top">
-                <span class="live-badge" id="liveBadge">
+                <span class="live-badge" id="publicLiveBadge">
                   <span class="live-dot live-dot--light"></span>
-                  <span id="liveBadgeText">Próximo live</span>
+                  <span id="publicLiveBadgeText">Próximo live</span>
                 </span>
-                <span class="live-stage__meta" id="liveTimer" data-next-live>Viernes · 8:30 PM</span>
+                <span class="live-stage__meta" id="publicLiveMeta" data-next-live>Viernes · 8:30 PM</span>
               </div>
 
-              <div class="live-stage__center" id="liveCenter">
-                <button class="live-start" type="button" data-action="start-live" aria-describedby="liveHint">
-                  <span class="live-start__play"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg></span>
-                  <span class="live-start__text">
-                    <strong>Iniciar EN VIVO</strong>
-                    <small>Activa tu cámara y muestra las prendas</small>
-                  </span>
-                </button>
-                <p class="live-stage__hint" id="liveHint">La cámara se muestra solo en este dispositivo.</p>
+              <div class="live-stage__center" id="publicLiveCenter">
+                <p class="live-viewer__message">La transmisión aparecerá aquí cuando estemos en vivo.</p>
+                <a class="btn btn--gold btn--sm" href="https://wa.me/528123752627?text=Hola%20Miranda%2C%20av%C3%ADsame%20cuando%20est%C3%A9s%20en%20vivo%20por%20favor." target="_blank" rel="noopener">
+                  <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
+                  Avisarme por WhatsApp
+                </a>
               </div>
-
-              <div class="live-stage__controls" id="liveControls" hidden>
-                <button class="live-control" type="button" data-action="switch-camera">
-                  <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
-                  Cambiar cámara
-                </button>
-                <button class="live-control" type="button" data-action="share-live">
-                  <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
-                  Compartir
-                </button>
-                <button class="live-control live-control--danger" type="button" data-action="stop-live">
-                  Finalizar
-                </button>
-              </div>
-
-              <div class="live-stage__error" id="liveError" hidden></div>
             </div>
-
-            <details class="live-connect" id="liveConnect">
-              <summary>
-                <svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>
-                Conectar mi transmisión de YouTube o Facebook
-              </summary>
-              <form class="live-connect__form" id="liveEmbedForm" novalidate>
-                <label class="visually-hidden" for="liveUrl">Enlace de la transmisión</label>
-                <input id="liveUrl" name="url" type="url" inputmode="url" placeholder="https://youtube.com/live/..." autocomplete="off">
-                <button class="btn btn--gold btn--sm" type="submit">Mostrar</button>
-                <button class="btn btn--ghost-light btn--sm" type="button" data-action="clear-embed">Quitar</button>
-              </form>
-              <p class="live-connect__note" id="liveEmbedNote">Pega el enlace de tu live de YouTube o Facebook. Se mostrará en el escenario para tus clientas.</p>
-            </details>
           </div>
 
           <aside class="live-rail" data-reveal aria-label="Producto y chat del live">
@@ -618,6 +584,10 @@
             Ropa
             <span class="admin-tab__count" id="tabRopaCount">0</span>
           </button>
+          <button class="admin-tab" type="button" role="tab" id="tabLive" aria-selected="false" aria-controls="panelLive" data-tab="live">
+            <svg class="icon" aria-hidden="true"><use href="#i-camera"></use></svg>
+            En vivo
+          </button>
         </nav>
 
         <div class="admin__stats" aria-label="Resumen">
@@ -905,6 +875,99 @@
               <div class="ropa-list" id="ropaList"></div>
               <div class="admin-empty" id="ropaEmpty" hidden>
                 <p>No hay prendas registradas. Agrega la primera con el formulario de arriba.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ---------------- EN VIVO ---------------- -->
+          <section class="admin-panel" id="panelLive" role="tabpanel" aria-labelledby="tabLive" data-panel="live" hidden>
+            <div class="admin-live">
+              <header class="admin-live__head">
+                <div>
+                  <p class="admin-form__kicker">Transmisión</p>
+                  <h3>En vivo</h3>
+                  <p class="admin-live__lede">Inicia la cámara o conecta tu transmisión de YouTube o Facebook. Las clientas solo ven el resultado en la sección En vivo.</p>
+                </div>
+                <span class="admin-form__badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+                  Solo panel privado
+                </span>
+              </header>
+
+              <div class="admin-live__grid">
+                <div class="admin-live__stage-col">
+                  <div class="live-stage live-stage--admin" id="liveStage">
+                    <img class="live-stage__poster" src="assets/hero-boutique.jpg" alt="Vista previa de la cámara del live" width="1200" height="1800">
+                    <video class="live-stage__video" id="liveVideo" autoplay muted playsinline aria-label="Vista previa de la cámara"></video>
+                    <iframe class="live-stage__frame" id="liveFrame" title="Transmisión conectada" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" hidden></iframe>
+                    <div class="live-stage__scrim" aria-hidden="true"></div>
+
+                    <div class="live-stage__top">
+                      <span class="live-badge" id="liveBadge">
+                        <span class="live-dot live-dot--light"></span>
+                        <span id="liveBadgeText">Cámara apagada</span>
+                      </span>
+                      <span class="live-stage__meta" id="liveTimer">Viernes · 8:30 PM</span>
+                    </div>
+
+                    <div class="live-stage__center" id="liveCenter">
+                      <button class="live-start" type="button" data-action="start-live" aria-describedby="liveHint">
+                        <span class="live-start__play"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg></span>
+                        <span class="live-start__text">
+                          <strong>Iniciar EN VIVO</strong>
+                          <small>Activa tu cámara y muestra las prendas</small>
+                        </span>
+                      </button>
+                      <p class="live-stage__hint" id="liveHint">La cámara se muestra solo en este panel.</p>
+                    </div>
+
+                    <div class="live-stage__controls" id="liveControls" hidden>
+                      <button class="live-control" type="button" data-action="switch-camera">
+                        <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+                        Cambiar cámara
+                      </button>
+                      <button class="live-control" type="button" data-action="share-live">
+                        <svg class="icon" aria-hidden="true"><use href="#i-share"></use></svg>
+                        Compartir
+                      </button>
+                      <button class="live-control live-control--danger" type="button" data-action="stop-live">
+                        Finalizar
+                      </button>
+                    </div>
+
+                    <div class="live-stage__error" id="liveError" hidden></div>
+                  </div>
+                  <p class="admin-live__hint">La cámara es solo una vista previa local. Para que las clientas vean el live, conecta YouTube o Facebook y comparte el enlace.</p>
+                </div>
+
+                <aside class="admin-live__side">
+                  <div class="admin-live__card">
+                    <h4>Conectar mi transmisión</h4>
+                    <p class="admin-live__card-lede">YouTube o Facebook</p>
+                    <form class="admin-live__form" id="liveEmbedForm" novalidate>
+                      <label for="liveUrl">Enlace del video en vivo</label>
+                      <input id="liveUrl" name="url" type="url" inputmode="url" placeholder="https://youtube.com/live/..." autocomplete="off">
+                      <div class="admin-live__form-actions">
+                        <button class="btn btn--dark btn--sm" type="submit">Mostrar en la web</button>
+                        <button class="btn btn--outline btn--sm" type="button" data-action="clear-embed">Quitar</button>
+                      </div>
+                    </form>
+                    <p class="admin-live__note" id="liveEmbedNote">Pega el enlace de tu live de YouTube o Facebook. Se mostrará en la sección En vivo.</p>
+                    <button class="btn btn--gold btn--sm btn--block admin-live__copy" type="button" data-action="copy-live-link">
+                      <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+                      Copiar enlace para clientas
+                    </button>
+                  </div>
+
+                  <div class="admin-live__card admin-live__card--soft">
+                    <h4>Cómo funciona</h4>
+                    <ol class="admin-live__steps">
+                      <li>Abre YouTube o Facebook y comienza tu transmisión.</li>
+                      <li>Copia el enlace del video EN VIVO y pégalo aquí.</li>
+                      <li>Pulsa “Mostrar en la web” y comparte el enlace con tus clientas.</li>
+                    </ol>
+                  </div>
+                </aside>
               </div>
             </div>
           </section>

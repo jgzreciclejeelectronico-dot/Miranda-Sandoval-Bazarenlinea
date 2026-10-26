@@ -1241,6 +1241,15 @@ table {
   color: rgba(250, 246, 238, 0.5);
 }
 
+.live-viewer__message {
+  max-width: 36ch;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--cream);
+}
+
 .live-stage__controls {
   position: absolute;
   z-index: 4;
@@ -2709,6 +2718,162 @@ table {
   animation: fade-in 0.35s var(--ease);
 }
 
+/* Panel privado · En vivo */
+.admin-live {
+  padding: 22px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow-xs);
+}
+
+.admin-live__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.admin-live__head h3 {
+  margin-top: 2px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.admin-live__lede {
+  margin-top: 8px;
+  max-width: 62ch;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.admin-live__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(250px, 0.85fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.admin-live__stage-col {
+  min-width: 0;
+}
+
+.admin-live__side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.admin-live__hint {
+  margin-top: 10px;
+  font-size: 9.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.admin-live__card {
+  padding: 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+}
+
+.admin-live__card h4 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.admin-live__card-lede {
+  margin-top: 2px;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.admin-live__form {
+  margin-top: 12px;
+}
+
+.admin-live__form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.admin-live__form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+}
+
+.admin-live__form input::placeholder {
+  color: var(--muted);
+}
+
+.admin-live__form input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(176, 138, 74, 0.15);
+}
+
+.admin-live__form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.admin-live__form-actions .btn {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.admin-live__note {
+  margin-top: 10px;
+  font-size: 9.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.admin-live__copy {
+  margin-top: 12px;
+}
+
+.admin-live__card--soft {
+  background: #fbf7ef;
+}
+
+.admin-live__steps {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+  padding-left: 18px;
+  list-style: decimal;
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.admin-live__steps li {
+  padding-left: 2px;
+}
+
 .admin-form {
   padding: 22px;
   border: 1px solid var(--line-soft);
@@ -3436,6 +3601,10 @@ table {
     grid-template-columns: 1fr;
   }
 
+  .admin-live__grid {
+    grid-template-columns: 1fr;
+  }
+
   .live-rail {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -3832,8 +4001,17 @@ table {
   }
 
   .admin-form,
-  .admin-list {
+  .admin-list,
+  .admin-live {
     padding: 16px;
+  }
+
+  .admin-live__head h3 {
+    font-size: 24px;
+  }
+
+  .admin-live__form-actions .btn {
+    flex: 1 1 100%;
   }
 
   .admin-form__badge {

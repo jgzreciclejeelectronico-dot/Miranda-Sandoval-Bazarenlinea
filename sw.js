@@ -4,7 +4,7 @@
    ========================================================================== */
 "use strict";
 
-var CACHE_NAME = "miranda-bazar-v2";
+var CACHE_NAME = "miranda-bazar-v3";
 var CORE_ASSETS = [
   "./",
   "./index.html",

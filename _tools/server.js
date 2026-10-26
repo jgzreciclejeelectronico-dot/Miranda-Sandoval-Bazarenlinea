@@ -2,8 +2,8 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
-const root = path.join(__dirname, "..", "miranda-bazar");
-const port = 4173;
+const root = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, "..");
+const port = Number(process.argv[3]) || 4173;
 const types = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
